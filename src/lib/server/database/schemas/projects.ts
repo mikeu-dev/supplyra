@@ -1,4 +1,16 @@
-import { pgTable, varchar, timestamp, text, date, index, json, boolean, decimal, integer, pgEnum } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	varchar,
+	timestamp,
+	text,
+	date,
+	index,
+	json,
+	boolean,
+	decimal,
+	integer,
+	pgEnum
+} from 'drizzle-orm/pg-core';
 import { sql, relations } from 'drizzle-orm';
 import { clients } from './clients';
 import { tasks } from './tasks';
@@ -11,7 +23,12 @@ import { invoices } from './invoices';
 import { salesOrders } from './crm/orders';
 
 // TABEL PROJECTS
-export const projectsStatusEnum = pgEnum('projects_status', ['pending', 'active', 'completed', 'on_hold']);
+export const projectsStatusEnum = pgEnum('projects_status', [
+	'pending',
+	'active',
+	'completed',
+	'on_hold'
+]);
 
 export const projects = pgTable(
 	'projects',
@@ -36,8 +53,7 @@ export const projects = pgTable(
 		estimatedHours: integer('estimated_hours').default(0),
 		deletedAt: timestamp('deleted_at'),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(table) => [
 		index('idx_projects_client_id').on(table.clientId),

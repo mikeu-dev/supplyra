@@ -15,8 +15,7 @@ export const warehouses = pgTable('inventory_warehouses', {
 	longitude: decimal('longitude', { precision: 11, scale: 8 }),
 	isActive: boolean('is_active').default(true),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 // LOCATIONS (Lokasi Spesifik / Rak / Zona)

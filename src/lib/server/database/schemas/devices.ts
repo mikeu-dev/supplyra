@@ -16,8 +16,7 @@ export const devices = pgTable('devices', {
 	isActive: boolean('is_active').default(true),
 	lastSeen: timestamp('last_seen'),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`),
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`),
 	deletedAt: timestamp('deleted_at')
 });
 

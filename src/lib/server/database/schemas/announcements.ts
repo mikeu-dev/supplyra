@@ -4,8 +4,16 @@ import { users } from './users';
 
 // TABEL ANNOUNCEMENTS (untuk pengumuman/broadcast dari admin)
 export const announcementsPriorityEnum = pgEnum('announcements_priority', ['normal', 'urgent']);
-export const announcementsTargetTypeEnum = pgEnum('announcements_target_type', ['all', 'role', 'user']);
-export const announcementsStatusEnum = pgEnum('announcements_status', ['draft', 'published', 'archived']);
+export const announcementsTargetTypeEnum = pgEnum('announcements_target_type', [
+	'all',
+	'role',
+	'user'
+]);
+export const announcementsStatusEnum = pgEnum('announcements_status', [
+	'draft',
+	'published',
+	'archived'
+]);
 
 export const announcements = pgTable(
 	'announcements',
@@ -23,8 +31,7 @@ export const announcements = pgTable(
 		publishedAt: timestamp('published_at'),
 		expiresAt: timestamp('expires_at'),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(table) => [
 		index('idx_announcements_status').on(table.status),

@@ -13,8 +13,7 @@ export const projectColumns = pgTable('project_columns', {
 	position: integer('position').notNull().default(0),
 	wipLimit: integer('wip_limit'), // null = unlimited
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const projectColumnsRelations = relations(projectColumns, ({ one }) => ({

@@ -1,9 +1,23 @@
-import { pgTable, varchar, timestamp, text, date, decimal, index, pgEnum } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	varchar,
+	timestamp,
+	text,
+	date,
+	decimal,
+	index,
+	pgEnum
+} from 'drizzle-orm/pg-core';
 import { sql, relations } from 'drizzle-orm';
 import { projects } from './projects';
 import { users } from './users';
 
-export const expensesStatusEnum = pgEnum('expenses_status', ['pending', 'approved', 'rejected', 'paid']);
+export const expensesStatusEnum = pgEnum('expenses_status', [
+	'pending',
+	'approved',
+	'rejected',
+	'paid'
+]);
 
 export const expenses = pgTable(
 	'expenses',
@@ -22,8 +36,7 @@ export const expenses = pgTable(
 		status: expensesStatusEnum('status').default('pending'),
 		receiptUrl: text('receipt_url'),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(t) => [
 		index('idx_expenses_project').on(t.projectId),

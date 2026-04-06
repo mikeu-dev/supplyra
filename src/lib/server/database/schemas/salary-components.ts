@@ -5,8 +5,14 @@ import { employees } from './employees';
 import { accounts } from './accounting/accounts';
 
 // SALARY COMPONENT TYPES (Master Data: Tunjangan Makan, Potongan BPJS, dll)
-export const salaryComponentsTypeEnum = pgEnum('salary_components_type', ['allowance', 'deduction']);
-export const salaryComponentsCalculationTypeEnum = pgEnum('salary_components_calculation_type', ['fixed', 'percentage']);
+export const salaryComponentsTypeEnum = pgEnum('salary_components_type', [
+	'allowance',
+	'deduction'
+]);
+export const salaryComponentsCalculationTypeEnum = pgEnum('salary_components_calculation_type', [
+	'fixed',
+	'percentage'
+]);
 
 export const salaryComponents = pgTable('salary_components', {
 	id: varchar('id', { length: 36 }).primaryKey(),
@@ -20,8 +26,7 @@ export const salaryComponents = pgTable('salary_components', {
 	accountId: varchar('account_id', { length: 36 }), // Link to Chart of Accounts (Expense/Liability)
 	isActive: boolean('is_active').default(true),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 // EMPLOYEE SALARY COMPONENTS (Assignment per Employee)

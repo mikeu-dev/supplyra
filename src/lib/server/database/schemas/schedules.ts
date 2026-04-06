@@ -19,8 +19,7 @@ export const schedules = pgTable(
 		startDate: timestamp('start_date').notNull(),
 		endDate: timestamp('end_date'),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(table) => [
 		index('idx_schedules_user_id').on(table.userId),

@@ -12,7 +12,9 @@ async function main() {
 				WHERE table_schema = 'public' AND table_name = 'companies'
 			) as exists
 		`;
-		console.log(companiesCheck[0].exists ? 'Companies table exists.' : 'Companies table does NOT exist.');
+		console.log(
+			companiesCheck[0].exists ? 'Companies table exists.' : 'Companies table does NOT exist.'
+		);
 
 		// Get positions table DDL
 		try {

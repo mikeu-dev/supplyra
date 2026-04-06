@@ -1,11 +1,28 @@
-import { pgTable, varchar, timestamp, text, boolean, decimal, index, foreignKey, pgEnum } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	varchar,
+	timestamp,
+	text,
+	boolean,
+	decimal,
+	index,
+	foreignKey,
+	pgEnum
+} from 'drizzle-orm/pg-core';
 import { sql, relations } from 'drizzle-orm';
 import { companies } from '../companies';
 import { accounts } from '../accounting/accounts'; // For linking Expense/Income accounts
 
 // PRODUCT CATEGORIES
-export const inventoryProductCategoriesCostingMethodEnum = pgEnum('inventory_product_categories_costing_method', ['standard', 'average', 'fifo']);
-export const inventoryProductCategoriesTypeEnum = pgEnum('inventory_product_categories_type', ['goods', 'service', 'consumable']);
+export const inventoryProductCategoriesCostingMethodEnum = pgEnum(
+	'inventory_product_categories_costing_method',
+	['standard', 'average', 'fifo']
+);
+export const inventoryProductCategoriesTypeEnum = pgEnum('inventory_product_categories_type', [
+	'goods',
+	'service',
+	'consumable'
+]);
 
 export const productCategories = pgTable('inventory_product_categories', {
 	id: varchar('id', { length: 36 }).primaryKey(),
@@ -49,8 +66,7 @@ export const products = pgTable(
 		isActive: boolean('is_active').default(true),
 
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(t) => [
 		index('idx_products_code').on(t.code),

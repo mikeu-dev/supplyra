@@ -20,8 +20,7 @@ export const clients = pgTable('clients', {
 	type: clientsTypeEnum('type').default('client'),
 	deletedAt: timestamp('deleted_at'),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const clientsRelations = relations(clients, ({ one, many }) => ({

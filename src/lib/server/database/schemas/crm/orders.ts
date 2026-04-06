@@ -1,4 +1,13 @@
-import { pgTable, varchar, timestamp, text, decimal, date, index, pgEnum } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	varchar,
+	timestamp,
+	text,
+	decimal,
+	date,
+	index,
+	pgEnum
+} from 'drizzle-orm/pg-core';
 import { sql, relations } from 'drizzle-orm';
 import { companies } from '../companies';
 import { clients } from '../clients';
@@ -8,7 +17,13 @@ import { products } from '../inventory/products';
 import { projects } from '../projects';
 
 // SALES ORDERS / QUOTATIONS
-export const crmSalesOrdersStateEnum = pgEnum('crm_sales_orders_state', ['draft', 'sent', 'sale', 'done', 'cancelled']);
+export const crmSalesOrdersStateEnum = pgEnum('crm_sales_orders_state', [
+	'draft',
+	'sent',
+	'sale',
+	'done',
+	'cancelled'
+]);
 
 export const salesOrders = pgTable(
 	'crm_sales_orders',
@@ -42,8 +57,7 @@ export const salesOrders = pgTable(
 		notes: text('notes'),
 
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(t) => [
 		index('idx_sales_orders_client').on(t.clientId),

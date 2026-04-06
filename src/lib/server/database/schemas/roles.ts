@@ -11,8 +11,7 @@ export const roles = pgTable('roles', {
 	description: varchar('description', { length: 255 }),
 	level: varchar('level', { length: 16 }).default('50'), // 1=Superadmin, 10=Admin, 20=Manager, 50=Staff, 99=Guest
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const rolesRelations = relations(roles, ({ many }) => ({

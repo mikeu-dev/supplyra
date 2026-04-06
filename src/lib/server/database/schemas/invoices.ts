@@ -1,4 +1,13 @@
-import { pgTable, varchar, timestamp, text, date, decimal, index, pgEnum } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	varchar,
+	timestamp,
+	text,
+	date,
+	decimal,
+	index,
+	pgEnum
+} from 'drizzle-orm/pg-core';
 import { sql, relations } from 'drizzle-orm';
 import { clients } from './clients';
 import { projects } from './projects';
@@ -6,12 +15,14 @@ import { purchaseOrders } from './purchase/orders';
 
 // INVOICES
 export const invoicesTypeEnum = pgEnum('invoices_type', ['out_invoice', 'in_invoice']);
-export const invoicesStatusEnum = pgEnum('invoices_status', ['draft',
-			'sent',
-			'paid',
-			'partially_paid',
-			'overdue',
-			'cancelled']);
+export const invoicesStatusEnum = pgEnum('invoices_status', [
+	'draft',
+	'sent',
+	'paid',
+	'partially_paid',
+	'overdue',
+	'cancelled'
+]);
 
 export const invoices = pgTable(
 	'invoices',
@@ -34,8 +45,7 @@ export const invoices = pgTable(
 			() => purchaseOrders.id
 		),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(t) => [
 		index('idx_invoices_client').on(t.clientId),

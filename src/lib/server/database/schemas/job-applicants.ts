@@ -17,8 +17,7 @@ export const jobApplicants = pgTable(
 		coverLetter: text('cover_letter'),
 		status: varchar('status', { length: 20 }).default('pending').notNull(), // 'pending', 'reviewed', 'interview', 'hired', 'rejected'
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(table) => [
 		index('idx_job_applicants_job_id').on(table.jobId),

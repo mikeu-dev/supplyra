@@ -15,8 +15,7 @@ export const taskComments = pgTable(
 			.references(() => users.id, { onDelete: 'cascade' }),
 		content: text('content').notNull(),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(t) => [
 		index('idx_task_comments_task').on(t.taskId),

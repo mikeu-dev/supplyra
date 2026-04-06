@@ -24,8 +24,11 @@ export abstract class BaseRepository<
 	}
 
 	async findById(id: string): Promise<TEntity | null> {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const result = await db.select().from(this.table as any).where(eq(this.table.id, id));
+		const result = await db
+			.select()
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			.from(this.table as any)
+			.where(eq(this.table.id, id));
 		return (result[0] as TEntity) ?? null;
 	}
 
@@ -38,8 +41,11 @@ export abstract class BaseRepository<
 	}
 
 	async update(id: string, data: Partial<TCreate>): Promise<void> {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		await db.update(this.table as any).set(data).where(eq(this.table.id, id));
+		await db
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			.update(this.table as any)
+			.set(data)
+			.where(eq(this.table.id, id));
 	}
 
 	async delete(id: string): Promise<void> {

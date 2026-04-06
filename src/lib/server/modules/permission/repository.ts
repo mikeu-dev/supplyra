@@ -76,10 +76,7 @@ export class PermissionRepository {
 		// For safety, let's delete existing for these defaults or just insert.
 		// Assuming clean slate or careful management.
 
-		await db
-			.insert(table.rolePermissions)
-			.values(values)
-			.onConflictDoNothing(); // skip duplicates
+		await db.insert(table.rolePermissions).values(values).onConflictDoNothing(); // skip duplicates
 	}
 
 	async removePermissionFromRole(roleId: string, permissionId: string) {
@@ -117,4 +114,3 @@ export class PermissionRepository {
 		});
 	}
 }
-import { sql } from 'drizzle-orm';

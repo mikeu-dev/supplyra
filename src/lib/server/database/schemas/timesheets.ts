@@ -1,10 +1,24 @@
-import { pgTable, varchar, timestamp, text, date, decimal, index, pgEnum } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	varchar,
+	timestamp,
+	text,
+	date,
+	decimal,
+	index,
+	pgEnum
+} from 'drizzle-orm/pg-core';
 import { sql, relations } from 'drizzle-orm';
 import { users } from './users';
 import { projects } from './projects';
 import { tasks } from './tasks';
 
-export const timesheetsStatusEnum = pgEnum('timesheets_status', ['draft', 'submitted', 'approved', 'rejected']);
+export const timesheetsStatusEnum = pgEnum('timesheets_status', [
+	'draft',
+	'submitted',
+	'approved',
+	'rejected'
+]);
 
 export const timesheets = pgTable(
 	'timesheets',
@@ -20,8 +34,7 @@ export const timesheets = pgTable(
 		description: text('description'),
 		status: timesheetsStatusEnum('status').default('draft'),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(t) => [
 		index('idx_timesheets_user').on(t.userId),

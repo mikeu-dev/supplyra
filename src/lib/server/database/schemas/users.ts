@@ -31,8 +31,7 @@ export const users = pgTable(
 		verificationToken: varchar('verification_token', { length: 255 }),
 		deletedAt: timestamp('deleted_at'),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(table) => [
 		index('idx_users_role_id').on(table.roleId),

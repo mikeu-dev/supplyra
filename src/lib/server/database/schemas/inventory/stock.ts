@@ -5,7 +5,13 @@ import { products } from './products';
 import { locations } from './warehouses';
 
 // STOCK MOVES (Perpindahan Stok)
-export const inventoryStockMovesStateEnum = pgEnum('inventory_stock_moves_state', ['draft', 'confirmed', 'assigned', 'done', 'cancelled']);
+export const inventoryStockMovesStateEnum = pgEnum('inventory_stock_moves_state', [
+	'draft',
+	'confirmed',
+	'assigned',
+	'done',
+	'cancelled'
+]);
 
 export const stockMoves = pgTable(
 	'inventory_stock_moves',
@@ -30,9 +36,7 @@ export const stockMoves = pgTable(
 		quantity: decimal('quantity', { precision: 15, scale: 2 }).notNull().default('0'),
 
 		reference: varchar('reference', { length: 100 }), // e.g. PO/001, SO/001
-		state: inventoryStockMovesStateEnum('state').default(
-			'draft'
-		),
+		state: inventoryStockMovesStateEnum('state').default('draft'),
 
 		date: timestamp('date').default(sql`CURRENT_TIMESTAMP`),
 
@@ -65,8 +69,7 @@ export const stockQuants = pgTable(
 		quantity: decimal('quantity', { precision: 15, scale: 2 }).notNull().default('0'),
 
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(t) => [
 		// Unique constraint: one record per product per location

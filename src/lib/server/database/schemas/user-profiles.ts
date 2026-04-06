@@ -18,8 +18,7 @@ export const userProfiles = pgTable('user_profiles', {
 	bio: text('bio'),
 	avatar: varchar('avatar', { length: 255 }),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const userProfilesRelations = relations(userProfiles, ({ one }) => ({

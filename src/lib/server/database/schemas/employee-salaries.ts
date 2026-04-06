@@ -3,7 +3,11 @@ import { sql, relations } from 'drizzle-orm';
 import { employees } from './employees';
 
 // TABEL EMPLOYEE SALARIES
-export const employeeSalariesTypeEnum = pgEnum('employee_salaries_type', ['monthly', 'weekly', 'hourly']);
+export const employeeSalariesTypeEnum = pgEnum('employee_salaries_type', [
+	'monthly',
+	'weekly',
+	'hourly'
+]);
 
 export const employeeSalaries = pgTable('employee_salaries', {
 	id: varchar('id', { length: 36 }).primaryKey(),
@@ -15,8 +19,7 @@ export const employeeSalaries = pgTable('employee_salaries', {
 	effectiveDate: date('effective_date').notNull(),
 	endDate: date('end_date'),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const employeeSalariesRelations = relations(employeeSalaries, ({ one }) => ({

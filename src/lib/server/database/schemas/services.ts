@@ -14,8 +14,7 @@ export const services = pgTable('services', {
 	descriptionId: text('description_id'),
 	descriptionEn: text('description_en'),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`),
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`),
 	deletedAt: timestamp('deleted_at')
 });
 

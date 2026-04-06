@@ -6,12 +6,14 @@ import { clients } from '../clients';
 
 // LEADS & OPPORTUNITIES (Prospek Penjualan)
 export const crmLeadsTypeEnum = pgEnum('crm_leads_type', ['lead', 'opportunity']);
-export const crmLeadsStageEnum = pgEnum('crm_leads_stage', ['new',
-			'qualified',
-			'proposition',
-			'negotiation',
-			'won',
-			'lost']);
+export const crmLeadsStageEnum = pgEnum('crm_leads_stage', [
+	'new',
+	'qualified',
+	'proposition',
+	'negotiation',
+	'won',
+	'lost'
+]);
 export const crmLeadsPriorityEnum = pgEnum('crm_leads_priority', ['low', 'medium', 'high']);
 
 export const leads = pgTable(
@@ -44,8 +46,7 @@ export const leads = pgTable(
 		notes: text('notes'),
 
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(t) => [index('idx_leads_salesperson').on(t.salespersonId), index('idx_leads_stage').on(t.stage)]
 );

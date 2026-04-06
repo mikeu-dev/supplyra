@@ -16,8 +16,7 @@ export const attachments = pgTable(
 		thumbnailUrl: varchar('thumbnail_url', { length: 512 }),
 		deletedAt: timestamp('deleted_at'),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(table) => [index('idx_attachments_owner').on(table.ownerId, table.ownerType)]
 );

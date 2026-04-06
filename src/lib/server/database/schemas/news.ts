@@ -18,8 +18,7 @@ export const news = pgTable('news', {
 	type: varchar('type', { length: 50 }),
 	published: boolean('published').default(false), // 'true' atau 'false'
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const newsRelations = relations(news, ({ one }) => ({

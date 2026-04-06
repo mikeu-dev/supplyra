@@ -4,8 +4,18 @@ import { companies } from './companies';
 import { employees } from './employees';
 
 // PAYROLL BATCHES (Periode Penggajian)
-export const payrollBatchesStatusEnum = pgEnum('payroll_batches_status', ['draft', 'processed', 'paid', 'cancelled']);
-export const payrollsStatusEnum = pgEnum('payrolls_status', ['pending', 'processing', 'paid', 'failed']);
+export const payrollBatchesStatusEnum = pgEnum('payroll_batches_status', [
+	'draft',
+	'processed',
+	'paid',
+	'cancelled'
+]);
+export const payrollsStatusEnum = pgEnum('payrolls_status', [
+	'pending',
+	'processing',
+	'paid',
+	'failed'
+]);
 
 export const payrollBatches = pgTable('payroll_batches', {
 	id: varchar('id', { length: 36 }).primaryKey(),
@@ -16,8 +26,7 @@ export const payrollBatches = pgTable('payroll_batches', {
 	period: date('period').notNull(), // Start date of period or month marker
 	status: payrollBatchesStatusEnum('status').default('draft'),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 // PAYROLLS (Slip Gaji per Karyawan)

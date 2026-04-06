@@ -65,8 +65,12 @@ export class ReportingService {
 					.where(
 						and(
 							eq(invoices.status, 'paid'),
-							startDate ? gte(invoices.issueDate, new Date(startDate).toISOString().split('T')[0]) : undefined,
-							endDate ? lte(invoices.issueDate, new Date(endDate).toISOString().split('T')[0]) : undefined
+							startDate
+								? gte(invoices.issueDate, new Date(startDate).toISOString().split('T')[0])
+								: undefined,
+							endDate
+								? lte(invoices.issueDate, new Date(endDate).toISOString().split('T')[0])
+								: undefined
 						)
 					);
 
@@ -80,8 +84,12 @@ export class ReportingService {
 						and(
 							// Assuming we count approved and paid expenses
 							sql`${expenses.status} IN ('approved', 'paid')`,
-							startDate ? gte(expenses.date, new Date(startDate).toISOString().split('T')[0]) : undefined,
-							endDate ? lte(expenses.date, new Date(endDate).toISOString().split('T')[0]) : undefined
+							startDate
+								? gte(expenses.date, new Date(startDate).toISOString().split('T')[0])
+								: undefined,
+							endDate
+								? lte(expenses.date, new Date(endDate).toISOString().split('T')[0])
+								: undefined
 						)
 					);
 

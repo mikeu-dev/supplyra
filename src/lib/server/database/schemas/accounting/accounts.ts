@@ -32,8 +32,7 @@ export const accounts = pgTable('accounting_accounts', {
 	description: text('description'),
 	isActive: boolean('is_active').default(true),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const accountsRelations = relations(accounts, ({ one }) => ({

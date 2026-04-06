@@ -1,4 +1,13 @@
-import { pgTable, varchar, timestamp, text, decimal, date, index, pgEnum } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	varchar,
+	timestamp,
+	text,
+	decimal,
+	date,
+	index,
+	pgEnum
+} from 'drizzle-orm/pg-core';
 import { sql, relations } from 'drizzle-orm';
 import { companies } from '../companies';
 import { clients } from '../clients';
@@ -9,7 +18,13 @@ import { projects } from '../projects';
 import { purchaseRequisitions } from './requisitions';
 
 // PURCHASE ORDERS / RFQ
-export const purchaseOrdersStateEnum = pgEnum('purchase_orders_state', ['draft', 'sent', 'purchase', 'done', 'cancelled']);
+export const purchaseOrdersStateEnum = pgEnum('purchase_orders_state', [
+	'draft',
+	'sent',
+	'purchase',
+	'done',
+	'cancelled'
+]);
 
 export const purchaseOrders = pgTable(
 	'purchase_orders',
@@ -47,8 +62,7 @@ export const purchaseOrders = pgTable(
 		),
 
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(t) => [
 		index('idx_purchase_orders_supplier').on(t.supplierId),

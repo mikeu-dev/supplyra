@@ -358,42 +358,366 @@ export const clients = [
 ];
 
 export const projects = [
-	{ id: 1, clientId: 13, tag: 'website', title: 'Health-Sync Portal', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 2, clientId: 7, tag: 'website', title: 'Urban Flow Manager', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 3, clientId: 8, tag: 'website', title: 'Investment Tracker', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 4, clientId: 7, tag: 'website', title: 'Housing Data Hub', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 5, clientId: 11, tag: 'server', title: 'Strategic SOC Deployment', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 6, clientId: 14, tag: 'server', title: 'Enterprise NAS Setup', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 7, clientId: 14, tag: 'qr code', title: 'Smart Label System', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 8, clientId: 5, tag: 'website', title: 'School Management Web', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 9, clientId: 1, tag: 'website', title: 'Legal Archive Portal', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 10, clientId: 8, tag: 'website', title: 'Public Queue Manager', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 11, clientId: 23, tag: 'website', title: 'Insights Dashboard', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 12, clientId: 23, tag: 'website', title: 'CSR Tracking Tool', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 13, clientId: 18, tag: 'website', title: 'Financial Asset Web', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 14, clientId: 6, tag: 'website', title: 'Civic Data Hub', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 15, clientId: 12, tag: 'website', title: 'Emergency Response App', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 16, clientId: 8, tag: 'website', title: 'License Approval Portal', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 17, clientId: 12, tag: 'website', title: 'Public Safety 113', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 18, clientId: 3, tag: 'website', title: 'Health Monitoring Web', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 19, clientId: 6, tag: 'website', title: 'Info Transparency App', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 20, clientId: 20, tag: 'website', title: 'SME Network Platform', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 21, clientId: 6, tag: 'website', title: 'Smart CCTV Hub', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 22, clientId: 6, tag: 'website', title: 'Judicial Data Portal', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 23, clientId: 4, tag: 'website', title: 'Social Service Gateway', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 24, clientId: 6, tag: 'website', title: 'Resource Management Tool', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 25, clientId: 23, tag: 'website', title: 'Strategy & Planning Web', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 26, clientId: 9, tag: 'website', title: 'Infrastructure Tracker', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 27, clientId: 2, tag: 'website', title: 'HR Management System A', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 28, clientId: 2, tag: 'website', title: 'HR Management System B', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 29, clientId: 21, tag: 'website', title: 'Agro-Business Portal', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 30, clientId: 6, tag: 'website', title: 'Public Gateway Web', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 31, clientId: 17, tag: 'website', title: 'Compliance Monitoring', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 32, clientId: 22, tag: 'website', title: 'Sports Activity Tracker', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 33, clientId: 16, tag: 'website', title: 'Gov Archive System', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 34, clientId: 5, tag: 'website', title: 'Audit & Monitoring Web', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 35, clientId: 16, tag: 'website', title: 'Service Platform X', description: null, thumbnail: null, moockup: null, techs: null },
-	{ id: 36, clientId: 16, tag: 'website', title: 'Service Platform Y', description: null, thumbnail: null, moockup: null, techs: null }
+	{
+		id: 1,
+		clientId: 13,
+		tag: 'website',
+		title: 'Health-Sync Portal',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 2,
+		clientId: 7,
+		tag: 'website',
+		title: 'Urban Flow Manager',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 3,
+		clientId: 8,
+		tag: 'website',
+		title: 'Investment Tracker',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 4,
+		clientId: 7,
+		tag: 'website',
+		title: 'Housing Data Hub',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 5,
+		clientId: 11,
+		tag: 'server',
+		title: 'Strategic SOC Deployment',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 6,
+		clientId: 14,
+		tag: 'server',
+		title: 'Enterprise NAS Setup',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 7,
+		clientId: 14,
+		tag: 'qr code',
+		title: 'Smart Label System',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 8,
+		clientId: 5,
+		tag: 'website',
+		title: 'School Management Web',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 9,
+		clientId: 1,
+		tag: 'website',
+		title: 'Legal Archive Portal',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 10,
+		clientId: 8,
+		tag: 'website',
+		title: 'Public Queue Manager',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 11,
+		clientId: 23,
+		tag: 'website',
+		title: 'Insights Dashboard',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 12,
+		clientId: 23,
+		tag: 'website',
+		title: 'CSR Tracking Tool',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 13,
+		clientId: 18,
+		tag: 'website',
+		title: 'Financial Asset Web',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 14,
+		clientId: 6,
+		tag: 'website',
+		title: 'Civic Data Hub',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 15,
+		clientId: 12,
+		tag: 'website',
+		title: 'Emergency Response App',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 16,
+		clientId: 8,
+		tag: 'website',
+		title: 'License Approval Portal',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 17,
+		clientId: 12,
+		tag: 'website',
+		title: 'Public Safety 113',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 18,
+		clientId: 3,
+		tag: 'website',
+		title: 'Health Monitoring Web',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 19,
+		clientId: 6,
+		tag: 'website',
+		title: 'Info Transparency App',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 20,
+		clientId: 20,
+		tag: 'website',
+		title: 'SME Network Platform',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 21,
+		clientId: 6,
+		tag: 'website',
+		title: 'Smart CCTV Hub',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 22,
+		clientId: 6,
+		tag: 'website',
+		title: 'Judicial Data Portal',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 23,
+		clientId: 4,
+		tag: 'website',
+		title: 'Social Service Gateway',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 24,
+		clientId: 6,
+		tag: 'website',
+		title: 'Resource Management Tool',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 25,
+		clientId: 23,
+		tag: 'website',
+		title: 'Strategy & Planning Web',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 26,
+		clientId: 9,
+		tag: 'website',
+		title: 'Infrastructure Tracker',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 27,
+		clientId: 2,
+		tag: 'website',
+		title: 'HR Management System A',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 28,
+		clientId: 2,
+		tag: 'website',
+		title: 'HR Management System B',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 29,
+		clientId: 21,
+		tag: 'website',
+		title: 'Agro-Business Portal',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 30,
+		clientId: 6,
+		tag: 'website',
+		title: 'Public Gateway Web',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 31,
+		clientId: 17,
+		tag: 'website',
+		title: 'Compliance Monitoring',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 32,
+		clientId: 22,
+		tag: 'website',
+		title: 'Sports Activity Tracker',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 33,
+		clientId: 16,
+		tag: 'website',
+		title: 'Gov Archive System',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 34,
+		clientId: 5,
+		tag: 'website',
+		title: 'Audit & Monitoring Web',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 35,
+		clientId: 16,
+		tag: 'website',
+		title: 'Service Platform X',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	},
+	{
+		id: 36,
+		clientId: 16,
+		tag: 'website',
+		title: 'Service Platform Y',
+		description: null,
+		thumbnail: null,
+		moockup: null,
+		techs: null
+	}
 ];
 
 export const navigation = {

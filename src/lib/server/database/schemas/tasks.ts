@@ -1,4 +1,13 @@
-import { pgTable, varchar, timestamp, text, date, integer, index, pgEnum } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	varchar,
+	timestamp,
+	text,
+	date,
+	integer,
+	index,
+	pgEnum
+} from 'drizzle-orm/pg-core';
 import { sql, relations } from 'drizzle-orm';
 import { projects } from './projects';
 import { users } from './users';
@@ -28,8 +37,7 @@ export const tasks = pgTable(
 		position: integer('position').notNull().default(0), // untuk ordering dalam kolom
 		deletedAt: timestamp('deleted_at'),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(table) => [
 		index('idx_tasks_project_id').on(table.projectId),

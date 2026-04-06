@@ -173,20 +173,20 @@
 
 ## 📦 NPM Scripts
 
-| Command              | Description                        |
-| -------------------- | ---------------------------------- |
-| `npm run dev`        | Run development server             |
-| `npm run build`      | Build for production               |
-| `npm run preview`    | Preview production build           |
-| `npm run check`      | Type checking & validation         |
-| `npm run lint`       | Lint code with ESLint & Prettier   |
-| `npm run format`     | Format code with Prettier          |
-| `npm run test`       | Run unit tests                     |
-| `npm run test:unit`  | Run unit tests (watch mode)        |
-| `npm run db:push`    | Push schema to database            |
-| `npm run db:migrate` | Run migrations                     |
-| `npm run db:studio`  | Open Drizzle Studio                |
-| `npm run db:seed`    | Seed database                      |
+| Command              | Description                      |
+| -------------------- | -------------------------------- |
+| `npm run dev`        | Run development server           |
+| `npm run build`      | Build for production             |
+| `npm run preview`    | Preview production build         |
+| `npm run check`      | Type checking & validation       |
+| `npm run lint`       | Lint code with ESLint & Prettier |
+| `npm run format`     | Format code with Prettier        |
+| `npm run test`       | Run unit tests                   |
+| `npm run test:unit`  | Run unit tests (watch mode)      |
+| `npm run db:push`    | Push schema to database          |
+| `npm run db:migrate` | Run migrations                   |
+| `npm run db:studio`  | Open Drizzle Studio              |
+| `npm run db:seed`    | Seed database                    |
 
 ## 🤝 Contribution
 

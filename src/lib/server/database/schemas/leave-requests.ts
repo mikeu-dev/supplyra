@@ -2,8 +2,17 @@ import { pgTable, varchar, timestamp, text, date, index, pgEnum } from 'drizzle-
 import { sql, relations } from 'drizzle-orm';
 import { users } from './users';
 
-export const leaveRequestsTypeEnum = pgEnum('leave_requests_type', ['annual', 'sick', 'unpaid', 'other']);
-export const leaveRequestsStatusEnum = pgEnum('leave_requests_status', ['pending', 'approved', 'rejected']);
+export const leaveRequestsTypeEnum = pgEnum('leave_requests_type', [
+	'annual',
+	'sick',
+	'unpaid',
+	'other'
+]);
+export const leaveRequestsStatusEnum = pgEnum('leave_requests_status', [
+	'pending',
+	'approved',
+	'rejected'
+]);
 
 export const leaveRequests = pgTable(
 	'leave_requests',
@@ -19,8 +28,7 @@ export const leaveRequests = pgTable(
 		status: leaveRequestsStatusEnum('status').default('pending'),
 		approvedBy: varchar('approved_by', { length: 36 }).references(() => users.id),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(t) => [
 		index('idx_leaves_user').on(t.userId),

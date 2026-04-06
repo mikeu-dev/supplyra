@@ -12,8 +12,7 @@ export const positions = pgTable('positions', {
 	name: text('name'),
 	baseSalary: decimal('base_salary', { precision: 15, scale: 2 }).default('0'),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`),
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`),
 	deletedAt: timestamp('deleted_at')
 });
 

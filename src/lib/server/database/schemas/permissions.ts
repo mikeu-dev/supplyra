@@ -11,8 +11,7 @@ export const permissions = pgTable('permissions', {
 	resource: varchar('resource', { length: 50 }).notNull(), // e.g., 'users'
 	action: varchar('action', { length: 50 }).notNull(), // e.g., 'create'
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const permissionsRelations = relations(permissions, ({ many }) => ({

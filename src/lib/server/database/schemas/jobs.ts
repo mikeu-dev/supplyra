@@ -15,8 +15,7 @@ export const jobs = pgTable(
 		requirements: text('requirements'), // Rich Text Content
 		status: varchar('status', { length: 20 }).default('draft').notNull(), // 'published', 'draft', 'closed'
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(table) => [index('idx_jobs_slug').on(table.slug), index('idx_jobs_status').on(table.status)]
 );

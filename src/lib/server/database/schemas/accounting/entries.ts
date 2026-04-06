@@ -1,4 +1,13 @@
-import { pgTable, varchar, timestamp, date, decimal, index, foreignKey, pgEnum } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	varchar,
+	timestamp,
+	date,
+	decimal,
+	index,
+	foreignKey,
+	pgEnum
+} from 'drizzle-orm/pg-core';
 import { sql, relations } from 'drizzle-orm';
 import { companies } from '../companies';
 import { journals } from './journals';
@@ -6,7 +15,11 @@ import { accounts } from './accounts';
 // import { invoices } from '../invoices'; // Link back to invoicing if needed (optional direct link)
 
 // JOURNAL ENTRIES (Header Transaksi)
-export const accountingJournalEntriesStateEnum = pgEnum('accounting_journal_entries_state', ['draft', 'posted', 'cancelled']);
+export const accountingJournalEntriesStateEnum = pgEnum('accounting_journal_entries_state', [
+	'draft',
+	'posted',
+	'cancelled'
+]);
 
 export const journalEntries = pgTable('accounting_journal_entries', {
 	id: varchar('id', { length: 36 }).primaryKey(),
@@ -21,8 +34,7 @@ export const journalEntries = pgTable('accounting_journal_entries', {
 	reference: varchar('reference', { length: 255 }), // External reference
 	state: accountingJournalEntriesStateEnum('state').default('draft'),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 // JOURNAL ITEMS (Baris Debit/Kredit)

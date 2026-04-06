@@ -13,8 +13,7 @@ export const shifts = pgTable('shifts', {
 	startTime: time('start_time').default('09:00:00').notNull(),
 	endTime: time('end_time').default('17:00:00').notNull(),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`),
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`),
 	deletedAt: timestamp('deleted_at')
 });
 

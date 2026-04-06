@@ -8,12 +8,14 @@ import { employeeSalaries } from './employee-salaries';
 import { roles } from './roles';
 
 // TABEL EMPLOYEES
-export const employeesStatusEnum = pgEnum('employees_status', ['permanent',
-		'contract',
-		'probation',
-		'internship',
-		'resigned',
-		'terminated']);
+export const employeesStatusEnum = pgEnum('employees_status', [
+	'permanent',
+	'contract',
+	'probation',
+	'internship',
+	'resigned',
+	'terminated'
+]);
 
 export const employees = pgTable('employees', {
 	id: varchar('id', { length: 36 }).primaryKey(),
@@ -43,8 +45,7 @@ export const employees = pgTable('employees', {
 	hourlyRate: decimal('hourly_rate', { precision: 15, scale: 2 }).default('0'),
 	deletedAt: timestamp('deleted_at'),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const employeesRelations = relations(employees, ({ one, many }) => ({

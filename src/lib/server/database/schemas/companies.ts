@@ -22,8 +22,7 @@ export const companies = pgTable('companies', {
 	website: varchar('website', { length: 255 }),
 	deletedAt: timestamp('deleted_at'),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const companiesRelations = relations(companies, ({ many }) => ({

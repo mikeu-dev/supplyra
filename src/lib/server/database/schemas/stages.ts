@@ -11,8 +11,7 @@ export const stages = pgTable('stages', {
 	name: text('name'),
 	code: text('code'),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`),
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`),
 	deletedAt: timestamp('deleted_at')
 });
 

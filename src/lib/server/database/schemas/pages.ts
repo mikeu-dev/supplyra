@@ -11,8 +11,7 @@ export const pages = pgTable('pages', {
 	published: boolean('published').default(false),
 	publishedAt: timestamp('published_at'),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const pagesRelations = relations(pages, () => ({}));

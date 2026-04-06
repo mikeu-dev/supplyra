@@ -3,7 +3,13 @@ import { sql } from 'drizzle-orm';
 import { tasks } from './tasks';
 import { users } from './users';
 
-export const taskActivitiesTypeEnum = pgEnum('task_activities_type', ['move', 'create', 'update', 'delete', 'comment']);
+export const taskActivitiesTypeEnum = pgEnum('task_activities_type', [
+	'move',
+	'create',
+	'update',
+	'delete',
+	'comment'
+]);
 
 export const taskActivities = pgTable('task_activities', {
 	id: varchar('id', { length: 36 }).primaryKey(),

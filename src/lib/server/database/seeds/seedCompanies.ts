@@ -1,6 +1,6 @@
 import { db } from '../index';
 import * as table from '../schemas/index';
-import { sql, eq } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 
 export async function seedCompanies() {
 	console.log('[SEED] Seeding companies...');

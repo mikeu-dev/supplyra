@@ -3,13 +3,15 @@ import { sql, relations } from 'drizzle-orm';
 import { users } from './users';
 
 // TABEL AUDIT LOGS
-export const auditLogsActionEnum = pgEnum('audit_logs_action', ['create',
-		'update',
-		'delete',
-		'login',
-		'logout',
-		'export',
-		'other']);
+export const auditLogsActionEnum = pgEnum('audit_logs_action', [
+	'create',
+	'update',
+	'delete',
+	'login',
+	'logout',
+	'export',
+	'other'
+]);
 
 export const auditLogs = pgTable('audit_logs', {
 	id: varchar('id', { length: 36 }).primaryKey(),

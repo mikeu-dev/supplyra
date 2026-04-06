@@ -9,8 +9,7 @@ export const banks = pgTable(
 		code: varchar('code', { length: 64 }).notNull().unique(),
 		name: varchar('name', { length: 255 }),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`),
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`),
 		deletedAt: timestamp('deleted_at')
 	},
 	(table) => [index('idx_banks_code').on(table.code)]

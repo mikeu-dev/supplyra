@@ -3,7 +3,14 @@ import { sql, relations } from 'drizzle-orm';
 import { users } from './users';
 
 // TABEL NOTIFICATIONS (untuk sistem notifikasi)
-export const notificationsTypeEnum = pgEnum('notifications_type', ['info', 'warning', 'success', 'error', 'task', 'system']);
+export const notificationsTypeEnum = pgEnum('notifications_type', [
+	'info',
+	'warning',
+	'success',
+	'error',
+	'task',
+	'system'
+]);
 
 export const notifications = pgTable('notifications', {
 	id: varchar('id', { length: 36 }).primaryKey(),
@@ -12,9 +19,7 @@ export const notifications = pgTable('notifications', {
 		.references(() => users.id),
 	title: varchar('title', { length: 255 }).notNull(),
 	message: text('message'),
-	type: notificationsTypeEnum('type').default(
-		'info'
-	),
+	type: notificationsTypeEnum('type').default('info'),
 	actionUrl: varchar('action_url', { length: 500 }),
 	metadata: json('metadata'),
 	readAt: timestamp('read_at'),

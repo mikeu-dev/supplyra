@@ -24,8 +24,7 @@ export const journals = pgTable('accounting_journals', {
 	defaultAccountId: varchar('default_account_id', { length: 36 }).references(() => accounts.id), // Default debit/credit account
 	isActive: boolean('is_active').default(true),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const journalsRelations = relations(journals, ({ one }) => ({

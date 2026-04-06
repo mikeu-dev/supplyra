@@ -430,9 +430,7 @@ export class DashboardService {
 					})
 					.from(expenses);
 
-				const conditions = [
-					sql`${expenses.date} >= ${startDate.toISOString().split('T')[0]}`
-				];
+				const conditions = [sql`${expenses.date} >= ${startDate.toISOString().split('T')[0]}`];
 
 				if (companyId) {
 					query = query

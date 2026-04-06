@@ -1,4 +1,14 @@
-import { pgTable, varchar, timestamp, text, decimal, date, index, foreignKey, pgEnum } from 'drizzle-orm/pg-core';
+import {
+	pgTable,
+	varchar,
+	timestamp,
+	text,
+	decimal,
+	date,
+	index,
+	foreignKey,
+	pgEnum
+} from 'drizzle-orm/pg-core';
 import { sql, relations } from 'drizzle-orm';
 import { companies } from '../companies';
 import { users } from '../users';
@@ -7,12 +17,14 @@ import { purchaseOrders } from './orders';
 import { projects } from '../projects';
 
 // PURCHASE REQUISITIONS (Permintaan Barang Internal)
-export const purchaseRequisitionsStateEnum = pgEnum('purchase_requisitions_state', ['draft',
-			'requested',
-			'approved',
-			'rejected',
-			'ordered',
-			'cancelled']);
+export const purchaseRequisitionsStateEnum = pgEnum('purchase_requisitions_state', [
+	'draft',
+	'requested',
+	'approved',
+	'rejected',
+	'ordered',
+	'cancelled'
+]);
 
 export const purchaseRequisitions = pgTable(
 	'purchase_requisitions',
@@ -40,8 +52,7 @@ export const purchaseRequisitions = pgTable(
 		projectId: varchar('project_id', { length: 36 }).references(() => projects.id),
 
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(t) => [
 		index('idx_purchase_requisitions_date').on(t.date),
@@ -50,33 +61,37 @@ export const purchaseRequisitions = pgTable(
 );
 
 // PURCHASE REQUISITION LINES
-export const purchaseRequisitionLines = pgTable('purchase_requisition_lines', {
-	id: varchar('id', { length: 36 }).primaryKey(),
-	companyId: varchar('company_id', { length: 36 })
-		.notNull()
-		.references(() => companies.id),
+export const purchaseRequisitionLines = pgTable(
+	'purchase_requisition_lines',
+	{
+		id: varchar('id', { length: 36 }).primaryKey(),
+		companyId: varchar('company_id', { length: 36 })
+			.notNull()
+			.references(() => companies.id),
 
-	requisitionId: varchar('requisition_id', { length: 36 }).notNull(),
+		requisitionId: varchar('requisition_id', { length: 36 }).notNull(),
 
-	productId: varchar('product_id', { length: 36 })
-		.notNull()
-		.references(() => products.id),
+		productId: varchar('product_id', { length: 36 })
+			.notNull()
+			.references(() => products.id),
 
-	description: varchar('description', { length: 255 }).notNull(),
+		description: varchar('description', { length: 255 }).notNull(),
 
-	quantity: decimal('quantity', { precision: 10, scale: 2 }).default('1'),
-	estimatedUnitPrice: decimal('estimated_unit_price', { precision: 15, scale: 2 }).default('0'),
+		quantity: decimal('quantity', { precision: 10, scale: 2 }).default('1'),
+		estimatedUnitPrice: decimal('estimated_unit_price', { precision: 15, scale: 2 }).default('0'),
 
-	subtotal: decimal('subtotal', { precision: 15, scale: 2 }).default('0'),
+		subtotal: decimal('subtotal', { precision: 15, scale: 2 }).default('0'),
 
-	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`)
-}, (t) => ({
-	requisitionFk: foreignKey({
-		name: 'purchase_req_lines_requisition_id_fk',
-		columns: [t.requisitionId],
-		foreignColumns: [purchaseRequisitions.id],
-	}).onDelete('cascade')
-}));
+		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`)
+	},
+	(t) => ({
+		requisitionFk: foreignKey({
+			name: 'purchase_req_lines_requisition_id_fk',
+			columns: [t.requisitionId],
+			foreignColumns: [purchaseRequisitions.id]
+		}).onDelete('cascade')
+	})
+);
 
 // RELATIONS
 export const purchaseRequisitionsRelations = relations(purchaseRequisitions, ({ one, many }) => ({

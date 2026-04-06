@@ -13,8 +13,7 @@ export const settings = pgTable(
 		value: varchar('value', { length: 1024 }).notNull(),
 		description: varchar('description', { length: 255 }),
 		createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-		updatedAt: timestamp('updated_at')
-			.default(sql`CURRENT_TIMESTAMP`)
+		updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 	},
 	(t) => ({
 		keyCompanyIdx: uniqueIndex('key_company_idx').on(t.key, t.companyId)

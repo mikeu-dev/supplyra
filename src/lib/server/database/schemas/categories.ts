@@ -14,8 +14,7 @@ export const categories = pgTable('categories', {
 	color: varchar('color', { length: 50 }),
 	icon: varchar('icon', { length: 50 }),
 	createdAt: timestamp('created_at').default(sql`CURRENT_TIMESTAMP`),
-	updatedAt: timestamp('updated_at')
-		.default(sql`CURRENT_TIMESTAMP`)
+	updatedAt: timestamp('updated_at').default(sql`CURRENT_TIMESTAMP`)
 });
 
 export const categoriesRelations = relations(categories, ({ one, many }) => ({
