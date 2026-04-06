@@ -52,7 +52,7 @@
 			class="rounded-lg border border-slate-200 bg-white p-4 shadow-xl dark:border-slate-700 dark:bg-slate-900"
 		>
 			<div class="flex items-start gap-3">
-				<div class="flex-shrink-0 rounded-lg bg-blue-100 p-2 dark:bg-blue-900">
+				<div class="shrink-0 rounded-lg bg-blue-100 p-2 dark:bg-blue-900">
 					<Download class="h-5 w-5 text-blue-600 dark:text-blue-400" />
 				</div>
 				<div class="flex-1">
@@ -80,7 +80,7 @@
 				</div>
 				<button
 					onclick={handleDismiss}
-					class="flex-shrink-0 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
+					class="shrink-0 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
 				>
 					<X class="h-4 w-4" />
 				</button>
