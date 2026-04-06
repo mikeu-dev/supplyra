@@ -7,7 +7,7 @@ export async function seedSettings() {
 	console.log('Seeding settings...');
 
 	const company = await db.query.companies.findFirst({
-		where: (companies, { eq }) => eq(companies.code, 'PS-001')
+		where: (companies, { eq }) => eq(companies.code, 'SUP-001')
 	});
 
 	if (!company) {

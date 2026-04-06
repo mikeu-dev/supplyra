@@ -9,7 +9,7 @@ export async function seedShifts() {
 	console.log('Seeding shifts...');
 
 	const company = await db.query.companies.findFirst({
-		where: (t, { eq }) => eq(t.code, 'PS-001')
+		where: (t, { eq }) => eq(t.code, 'SUP-001')
 	});
 
 	if (!company) {

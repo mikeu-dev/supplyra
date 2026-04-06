@@ -22,7 +22,7 @@ export async function seedEmployees() {
 	console.log(`Found ${usersMissingEmployee.length} users without employee record.`);
 
 	// Try to find the Main Company first
-	const mainCompany = allCompanies.find((c) => c.code === 'PS-001') || allCompanies[0];
+	const mainCompany = allCompanies.find((c) => c.code === 'SUP-001') || allCompanies[0];
 	const secondCompany = allCompanies.find((c) => c.code === 'MS-002');
 
 	for (const user of usersMissingEmployee) {
