@@ -125,21 +125,30 @@
    Edit `.env` file and adjust configuration:
 
    ```env
-   DATABASE_URL="postgresql://user:password@localhost:5432/database"
-   PASSWORD_DEFAULT="defaultpassword"
+   # Database & Auth
+   DATABASE_URL="postgresql://postgres.[YOUR_PROJECT_REF]:[YOUR_PASSWORD]@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres"
+   PASSWORD_DEFAULT="mysecretpassword"
+
+   # Redis Configuration
    REDIS_URL="redis://localhost:6379"
 
    # Email Configuration
-   MAIL_HOST=smtp.example.com
-   MAIL_PORT=587
-   MAIL_USERNAME=your-email
+   MAIL_HOST=sandbox.smtp.mailtrap.io
+   MAIL_PORT=2525
+   MAIL_USERNAME=your-username
    MAIL_PASSWORD=your-password
 
-   # Storage (s3 or local)
+   # Storage Configuration (S3 or Local)
    STORAGE_DRIVER=local
-   AWS_ACCESS_KEY_ID=your-key
-   AWS_SECRET_ACCESS_KEY=your-secret
-   AWS_BUCKET_NAME=your-bucket
+   AWS_ACCESS_KEY_ID=minioadmin
+   AWS_SECRET_ACCESS_KEY=minioadmin
+   AWS_BUCKET_NAME=supplyra
+   AWS_ENDPOINT=http://localhost:9005
+
+   # VAPID Keys (for Web Push)
+   VAPID_SUBJECT="mailto:your-email@example.com"
+   VAPID_PRIVATE_KEY=""
+   PUBLIC_VAPID_KEY=""
    ```
 
 4. **Setup database**

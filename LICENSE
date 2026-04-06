@@ -1,24 +1,21 @@
-PROPRIETARY LICENSE
+MIT License
 
-Copyright (c) PT. Pratama Solusi Teknologi
+Copyright (c) 2024 Supplyra Team
 
-Seluruh hak cipta dilindungi undang-undang. Anda tidak diperbolehkan untuk menyalin, memodifikasi, menyebarkan, atau menggunakan bagian mana pun dari perangkat lunak ini tanpa izin tertulis dari pemegang hak cipta.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Dilarang keras untuk:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-- Menyalin atau mendistribusikan ulang kode sumber atau biner dalam bentuk apa pun.
-- Menggunakan kode ini, sebagian atau seluruhnya, untuk tujuan komersial tanpa persetujuan tertulis.
-- Membongkar, membalikkan rekayasa (reverse-engineering), atau mencoba mendapatkan akses ke kode sumber.
-
-Perangkat lunak ini disediakan "apa adanya", tanpa jaminan apa pun, tersurat maupun tersirat. PT. Pratama Solusi Teknologi tidak bertanggung jawab atas kerusakan langsung, tidak langsung, insidental, atau konsekuensial yang timbul dari penggunaan perangkat lunak ini.
-
-Untuk lisensi penggunaan, kerja sama, atau informasi lebih lanjut, silakan hubungi:
-
-mikeu-dev  
-Email: rikiruswandi@gmail.com  
-Website: https://mikeudev.vercel.app/
-
----
-
-Diterbitkan oleh:  
-PT. Pratama Solusi Teknologi  
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

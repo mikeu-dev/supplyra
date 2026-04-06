@@ -1,4 +1,4 @@
-export const EmailLayout = (content: string, title: string = 'PT Pratama Solusi Teknologi') => {
+export const EmailLayout = (content: string, title: string = 'Supplyra Solutions') => {
 	const currentYear = new Date().getFullYear();
 
 	return `
@@ -31,13 +31,13 @@ export const EmailLayout = (content: string, title: string = 'PT Pratama Solusi 
     <div style="padding: 40px 0;">
         <div class="container">
             <div class="header">
-                <h1>PT Pratama Solusi Teknologi</h1>
+                <h1>Supplyra Solutions</h1>
             </div>
             <div class="content">
                 ${content}
             </div>
             <div class="footer">
-                <p>&copy; ${currentYear} PT Pratama Solusi Teknologi. All rights reserved.</p>
+                <p>&copy; ${currentYear} Supplyra Solutions. All rights reserved.</p>
                 <p>Email ini dikirim secara otomatis, mohon tidak membalas email ini.</p>
             </div>
         </div>
