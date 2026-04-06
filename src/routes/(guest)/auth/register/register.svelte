@@ -30,8 +30,8 @@
 	<div class="sm:mx-auto sm:w-full sm:max-w-sm">
 		<img
 			class="mx-auto h-10 w-auto"
-			src="/pst-brand-logo-bg-none.png"
-			alt="PT. Pratama Solusi Teknologi"
+			src="/logo.png"
+			alt="Supplyra ERP"
 		/>
 		<h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
 			{m.register_text()}

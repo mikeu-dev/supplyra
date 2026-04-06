@@ -20,7 +20,7 @@ export const PayslipEmailTemplate = (name: string, period: string, amount: strin
 
         <p>Detail lengkap komponen gaji (gaji pokok, tunjangan, potongan, lembur, dll) dapat dilihat dan diunduh melalui aplikasi panel karyawan.</p>
         <br>
-        <a href="https://erp.pratamatechsolution.tech/panel/employee/payslips" class="button" style="color: #ffffff;">Lihat Detail di Aplikasi</a>
+        <a href="https://supplyra.com/panel/employee/payslips" class="button" style="color: #ffffff;">Lihat Detail di Aplikasi</a>
         <br><br>
         <p>Terima kasih atas kerja keras dan dedikasi Anda.</p>
     `;

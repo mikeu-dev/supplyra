@@ -14,7 +14,7 @@
 			<!-- Tentang -->
 			<div>
 				<a href={resolve('/')} class="-m-1.5 mb-2 flex items-center gap-2 p-1.5">
-					<img class="h-8 w-auto" src="/pst-brand-logo-bg-none.png" alt={data.app_name} />
+					<img class="h-8 w-auto" src="/logo.png" alt={data.app_name} />
 				</a>
 				<p class="text-justify text-sm text-gray-500 dark:text-gray-400">
 					{data.about}

@@ -4,7 +4,7 @@
 	import Search from '@lucide/svelte/icons/search';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 
-	let { title = 'SV-ERP' }: { title?: string } = $props();
+	let { title = 'Supplyra' }: { title?: string } = $props();
 </script>
 
 <header

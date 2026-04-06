@@ -37,7 +37,7 @@ export class NewsletterService
 
 		await mailer.queueMail({
 			to: email,
-			subject: 'Selamat Datang di Newsletter PT Pratama Solusi Teknologi',
+			subject: 'Selamat Datang di Newsletter Supplyra',
 			html: WelcomeEmailTemplate(email)
 		});
 	}

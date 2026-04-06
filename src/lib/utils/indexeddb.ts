@@ -35,7 +35,7 @@ interface SVERPDatabase extends DBSchema {
 	};
 }
 
-const DB_NAME = 'sv-erp-db';
+const DB_NAME = 'supplyra-db';
 const DB_VERSION = 1;
 
 let dbInstance: IDBPDatabase<SVERPDatabase> | null = null;

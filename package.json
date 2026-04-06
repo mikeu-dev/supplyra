@@ -112,7 +112,7 @@
 		"pdfmake": "^0.3.2",
 		"postgres": "^3.4.9",
 		"quill": "^2.0.3",
-		"sv-erp-sh": "file:",
+		"supplyra-erp": "file:",
 		"svelte-fast-marquee": "^1.0.2",
 		"svelte-filepond": "^0.2.2",
 		"valibot": "^1.2.0",

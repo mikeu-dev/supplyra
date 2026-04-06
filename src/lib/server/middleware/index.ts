@@ -196,7 +196,7 @@ export const performanceMiddleware: Handle = async ({ event, resolve }) => {
 		headers: {
 			...Object.fromEntries(response.headers),
 			'X-Response-Time': `${duration}ms`,
-			'X-Powered-By': 'SV-ERP-SH'
+			'X-Powered-By': 'Supplyra'
 		}
 	});
 };

@@ -1,7 +1,7 @@
 {
-	"name": "SV-ERP-SH",
-	"short_name": "SV-ERP",
-	"description": "Enterprise Resource Planning System by PT. Pratama Solusi Teknologi",
+	"name": "Supplyra ERP",
+	"short_name": "Supplyra",
+	"description": "Enterprise Resource Planning System by Supplyra",
 	"start_url": "/panel",
 	"display": "standalone",
 	"background_color": "#ffffff",

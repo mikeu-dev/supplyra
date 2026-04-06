@@ -17,8 +17,8 @@ export default defineConfig({
 			base: '/',
 			selfDestroying: process.env.SELF_DESTROYING_SW === 'true',
 			manifest: {
-				short_name: 'SV-ERP',
-				name: 'SV-ERP-SH - Enterprise Resource Planning',
+				short_name: 'Supplyra',
+				name: 'Supplyra ERP',
 				start_url: '/panel',
 				scope: '/',
 				display: 'standalone',
@@ -26,7 +26,7 @@ export default defineConfig({
 				background_color: '#ffffff',
 				orientation: 'portrait-primary',
 				categories: ['business', 'productivity'],
-				description: 'Enterprise Resource Planning System by PT. Pratama Solusi Teknologi',
+				description: 'Enterprise Resource Planning System by Supplyra',
 				icons: [
 					{
 						src: '/icons/icon-128x128.png',

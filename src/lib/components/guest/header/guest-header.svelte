@@ -57,7 +57,7 @@
 		<!-- Kiri: Logo -->
 		<div class="flex-1">
 			<a href={localizeHref('/')} class="flex items-center gap-2">
-				<img src="/pst-brand-logo-bg-none.png" alt={data.app_name} class="h-8 w-auto" />
+				<img src="/logo.png" alt={data.app_name} class="h-8 w-auto" />
 				<span class="sr-only">{data.app_name}</span>
 			</a>
 		</div>
@@ -148,7 +148,7 @@
 					class="flex items-center gap-2"
 					onclick={() => (isMenuOpen = false)}
 				>
-					<img src="/pst-brand-logo-bg-none.png" alt={data.app_name} class="h-8 w-auto" />
+					<img src="/logo.png" alt={data.app_name} class="h-8 w-auto" />
 				</a>
 				<button
 					type="button"

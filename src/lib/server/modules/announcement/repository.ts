@@ -1,6 +1,6 @@
 import * as table from '$lib/server/database/schemas';
 import { db } from '$lib/server/database';
-import { eq, and, count, desc, isNotNull, sql } from 'drizzle-orm';
+import { eq, and, count, desc, isNotNull, lte } from 'drizzle-orm';
 import { BaseRepository } from '$lib/server/core/base.repository';
 import type { IAnnouncementRepository } from './interfaces/IAnnouncementRepository';
 
@@ -147,9 +147,11 @@ export class AnnouncementRepository
 				and(
 					eq(table.announcements.status, 'published'),
 					isNotNull(table.announcements.expiresAt),
-					sql`${table.announcements.expiresAt} <= ${now}`
+					lte(table.announcements.expiresAt, now)
 				)
-			);
-		return result[0].affectedRows;
+			)
+			.returning({ id: table.announcements.id });
+
+		return result.length;
 	}
 }

@@ -57,7 +57,7 @@
 				</div>
 				<div class="flex-1">
 					<h3 class="text-sm font-semibold text-slate-900 dark:text-slate-100">
-						Install SV-ERP App
+						Install Supplyra App
 					</h3>
 					<p class="mt-1 text-sm text-slate-600 dark:text-slate-400">
 						Install our app for a better experience with offline access and quick launch.

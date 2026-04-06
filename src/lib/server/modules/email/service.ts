@@ -9,7 +9,7 @@ export class EmailService {
 		const html = PayslipEmailTemplate(name, period, amount);
 
 		return await mailer.queueMail({
-			from: '"SV ERP System" <no-reply@pratamatechsolution.tech>',
+			from: '"Supplyra ERP" <no-reply@supplyra.com>',
 			to,
 			subject: `Slip Gaji Periode ${period}`,
 			html
@@ -22,7 +22,7 @@ export class EmailService {
 		const html = PasswordResetEmailTemplate(resetLink);
 
 		return await mailer.queueMail({
-			from: '"SV ERP System" <no-reply@pratamatechsolution.tech>',
+			from: '"Supplyra ERP" <no-reply@supplyra.com>',
 			to,
 			subject: 'Permintaan Reset Password',
 			html

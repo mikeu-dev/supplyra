@@ -319,8 +319,8 @@
 						{portfolioContent.cta.subheading}
 					</p>
 					<div class="mt-10 flex items-center justify-center gap-x-6">
-						<Button size="lg" variant="default" href="mailto:office@pratamatechsolution.co.id">
-							{portfolioContent.cta.button}
+						<Button size="lg" variant="default" href="mailto:support@supplyra.com">
+							Hubungi Kami
 						</Button>
 					</div>
 				</div>
