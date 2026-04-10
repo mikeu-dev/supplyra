@@ -109,6 +109,30 @@ export class ReportingService {
 		);
 	}
 
+	async getMonthlyFinancialTrends(months = 6) {
+		const trends = [];
+		const now = new Date();
+
+		for (let i = months - 1; i >= 0; i--) {
+			const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+			const monthName = d.toLocaleString('id-ID', { month: 'short' });
+			const year = d.getFullYear();
+
+			const startDate = new Date(d.getFullYear(), d.getMonth(), 1).toISOString();
+			const endDate = new Date(d.getFullYear(), d.getMonth() + 1, 0).toISOString();
+
+			const report = await this.generateFinancialReport(startDate, endDate);
+			trends.push({
+				month: `${monthName} ${year}`,
+				income: report.income,
+				expense: report.expense,
+				profit: report.profit
+			});
+		}
+
+		return trends;
+	}
+
 	async generateProjectProfitabilityReport() {
 		return await cache.getOrSet(
 			CacheKeys.reporting.projectProfitability(),

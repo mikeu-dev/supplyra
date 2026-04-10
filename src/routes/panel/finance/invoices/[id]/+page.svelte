@@ -5,13 +5,40 @@
 	import ArrowLeft from '@lucide/svelte/icons/arrow-left';
 	import Download from '@lucide/svelte/icons/download';
 	import * as m from '$lib/paraglide/messages.js';
+	import type { PageData as GeneratedPageData } from './$types';
+	import type { Company } from '$lib/server/database/schemas';
 
-	/* eslint-disable @typescript-eslint/no-explicit-any */
-	let { data }: { data: any } = $props();
+	interface InvoiceItem {
+		description: string;
+		quantity: string | number | null;
+		unitPrice: string | number | null;
+	}
+
+	interface ExtendedPageData extends GeneratedPageData {
+		invoice: GeneratedPageData['invoice'] & {
+			client: { name: string } | null;
+			items: InvoiceItem[];
+		};
+		company: Company | null;
+	}
+
+	let { data }: { data: ExtendedPageData } = $props();
 	const invoice = $derived(data.invoice);
+	const company = $derived(data.company);
 
 	function downloadPdf() {
-		PdfClient.generateInvoice(invoice);
+		// Convert strings to numbers for PDF generator
+		const formattedInvoice = {
+			...invoice,
+			items: invoice.items.map((item: InvoiceItem) => ({
+				...item,
+				description: item.description,
+				quantity: Number(item.quantity || 0),
+				unitPrice: Number(item.unitPrice || 0)
+			})),
+			total: Number(invoice.total || 0)
+		};
+		PdfClient.generateInvoice(formattedInvoice, company);
 	}
 </script>
 
@@ -91,14 +118,16 @@
 									<td class="p-4 align-middle">{item.description}</td>
 									<td class="p-4 text-right align-middle">{item.quantity}</td>
 									<td class="p-4 text-right align-middle">{item.unitPrice}</td>
-									<td class="p-4 text-right align-middle">{item.quantity * item.unitPrice}</td>
+									<td class="p-4 text-right align-middle">
+										{Number(item.quantity || 0) * Number(item.unitPrice || 0)}
+									</td>
 								</tr>
 							{/each}
 						</tbody>
 						<tfoot>
 							<tr class="font-medium">
 								<td colspan="3" class="p-4 text-right align-middle">Total</td>
-								<td class="p-4 text-right align-middle">{invoice.total}</td>
+								<td class="p-4 text-right align-middle">{Number(invoice.total || 0)}</td>
 							</tr>
 						</tfoot>
 					</table>

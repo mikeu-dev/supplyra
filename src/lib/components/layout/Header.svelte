@@ -2,24 +2,47 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import { Separator } from '$lib/components/ui/separator';
 	import NotificationDropdown from './NotificationDropdown.svelte';
+	import * as Breadcrumb from '$lib/components/ui/breadcrumb';
 	import { page } from '$app/state';
 
-	// Simple breadcrumbs derivation
-	let breadcrumbs = $derived(page.url.pathname.split('/').filter(Boolean));
+	// Interactive breadcrumbs derivation
+	let breadcrumbItems = $derived.by(() => {
+		const paths = page.url.pathname.split('/').filter(Boolean);
+		return paths.map((path, index) => {
+			const href = '/' + paths.slice(0, index + 1).join('/');
+			return {
+				name: path.charAt(0).toUpperCase() + path.slice(1).replace(/-/g, ' '),
+				href
+			};
+		});
+	});
 </script>
 
 <header class="flex h-16 shrink-0 items-center justify-between gap-2 border-b px-4">
 	<div class="flex items-center gap-2">
 		<Sidebar.Trigger class="-ml-1" />
 		<Separator orientation="vertical" class="mr-2 h-4" />
-		<div class="text-muted-foreground flex items-center gap-2 text-sm">
-			{#each breadcrumbs as crumb, i (i)}
-				<span class="capitalize">{crumb}</span>
-				{#if i < breadcrumbs.length - 1}
-					<span>/</span>
-				{/if}
-			{/each}
-		</div>
+		
+		<Breadcrumb.Root>
+			<Breadcrumb.List>
+				{#each breadcrumbItems as item, i (i)}
+					<Breadcrumb.Item>
+						{#if i === breadcrumbItems.length - 1}
+							<Breadcrumb.Page class="font-bold text-blue-900 dark:text-blue-100">
+								{item.name}
+							</Breadcrumb.Page>
+						{:else}
+							<Breadcrumb.Link href={item.href} class="hover:text-primary transition-colors">
+								{item.name}
+							</Breadcrumb.Link>
+						{/if}
+					</Breadcrumb.Item>
+					{#if i < breadcrumbItems.length - 1}
+						<Breadcrumb.Separator />
+					{/if}
+				{/each}
+			</Breadcrumb.List>
+		</Breadcrumb.Root>
 	</div>
 	<div class="flex items-center gap-4">
 		<button
