@@ -33,6 +33,7 @@ export const actions: Actions = {
 		const sidebarBg = formData.get('sidebarBg') as string;
 		const sidebarText = formData.get('sidebarText') as string;
 		const radius = formData.get('radius') as string;
+		const signatureBase64 = formData.get('signatureBase64') as string;
 
 		try {
 			const companyService = CompanyModule.getService();
@@ -47,7 +48,8 @@ export const actions: Actions = {
 				primaryColor,
 				sidebarBg,
 				sidebarText,
-				radius
+				radius,
+				signatureBase64: signatureBase64 || undefined
 			};
 
 			await companyService.updateProfile(companyId, {

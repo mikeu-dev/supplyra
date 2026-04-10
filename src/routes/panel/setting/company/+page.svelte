@@ -32,12 +32,38 @@
 	// Switch binding needs boolean, form requires input submission
 	// We bind switch to a variable, and use a hidden input for form submission
 	let isPublic = $state(false);
+	let signatureBase64 = $state('');
 
 	$effect(() => {
 		if (company && typeof company.isPublic !== 'undefined') {
 			isPublic = !!company.isPublic;
 		}
+		
+		// Set initial signature if exists and local state is empty
+		if (themeConfig.signatureBase64 && !signatureBase64) {
+			signatureBase64 = themeConfig.signatureBase64 as string;
+		}
 	});
+
+	function handleSignatureChange(event: Event) {
+		const target = event.target as HTMLInputElement;
+		const file = target.files?.[0];
+		if (!file) return;
+
+		// Basic size validation (< 500KB)
+		if (file.size > 500 * 1024) {
+			toast.error('Image size should be less than 500KB');
+			return;
+		}
+
+		const reader = new FileReader();
+		reader.onload = (e) => {
+			if (e.target?.result && typeof e.target.result === 'string') {
+				signatureBase64 = e.target.result;
+			}
+		};
+		reader.readAsDataURL(file);
+	}
 
 	const handleResult: SubmitFunction = () => {
 		return async ({ result }) => {
@@ -213,6 +239,39 @@
 						<p class="text-[10px] text-center text-muted-foreground italic">Pratinjau visual berdasarkan pengaturan di atas.</p>
 					</div>
 				</div>
+			</Card.Content>
+		</Card.Root>
+
+		<!-- Official Document Signature -->
+		<Card.Root>
+			<Card.Header>
+				<Card.Title>Official Document Signature</Card.Title>
+				<Card.Description>Upload an authorized signature (transparent PNG) to be appended to official generated documents like invoices.</Card.Description>
+			</Card.Header>
+			<Card.Content class="space-y-4">
+				<div class="space-y-2">
+					<Label for="signatureUpload">Signature Image (Max 500KB)</Label>
+					<Input
+						id="signatureUpload"
+						type="file"
+						accept="image/png, image/jpeg"
+						onchange={handleSignatureChange}
+					/>
+					<input type="hidden" name="signatureBase64" value={signatureBase64} />
+				</div>
+
+				{#if signatureBase64}
+					<div class="mt-4 flex flex-col gap-2">
+						<Label>Preview</Label>
+						<div class="relative w-48 h-24 border rounded-md bg-stone-100 flex items-center justify-center overflow-hidden custom-checkerboard">
+							<!-- Checkerboard bg to see transparency -->
+							<img src={signatureBase64} alt="Signature Preview" class="max-h-full object-contain" />
+						</div>
+						<Button variant="outline" size="sm" class="w-48 text-red-600 hover:text-red-700 hover:bg-red-50" onclick={(e) => { e.preventDefault(); signatureBase64 = ''; }}>
+							Remove Signature
+						</Button>
+					</div>
+				{/if}
 			</Card.Content>
 			<Card.Footer>
 				<Button type="submit" class="w-full md:w-auto">Simpan Konfigurasi Brand</Button>

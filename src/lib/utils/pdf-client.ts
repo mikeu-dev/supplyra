@@ -128,12 +128,30 @@ export class PdfClient {
 					]
 				},
 
-				// FOOTER NOTES
+				// FOOTER NOTES & SIGNATURE
 				{
 					margin: [0, 60, 0, 0],
-					stack: [
-						{ text: 'NOTES & TERMS', style: 'sectionLabel' },
-						{ text: 'Please make payment within 14 days of receiving this invoice. Thank you for your business!', fontSize: 9, color: '#666666', lineHeight: 1.5 }
+					columns: [
+						{
+							width: '*',
+							stack: [
+								{ text: 'NOTES & TERMS', style: 'sectionLabel' },
+								{ text: 'Please make payment within 14 days of receiving this invoice. Thank you for your business!', fontSize: 9, color: '#666666', lineHeight: 1.5 }
+							]
+						},
+						{
+							width: 150,
+							alignment: 'center',
+							stack: [
+								{ text: 'AUTHORIZED BY', style: 'sectionLabel' },
+								...(theme.signatureBase64 
+									? [{ image: theme.signatureBase64 as string, fit: [150, 60], margin: [0, 5, 0, 5] as [number, number, number, number] }] 
+									: [{ text: '', margin: [0, 30, 0, 30] as [number, number, number, number] }]
+								),
+								{ canvas: [{ type: 'line', x1: 0, y1: 0, x2: 150, y2: 0, lineWidth: 1 }], margin: [0, 0, 0, 5] },
+								{ text: company?.name || 'Authorized Signatory', style: 'companyDetails', alignment: 'center' }
+							]
+						}
 					]
 				}
 			],
