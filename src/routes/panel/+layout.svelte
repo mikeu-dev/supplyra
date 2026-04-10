@@ -20,6 +20,7 @@
 	import MobileHeader from '$lib/components/mobile/MobileHeader.svelte';
 	import Header from '$lib/components/layout/Header.svelte';
 	import { realtime } from '$lib/stores/realtime.svelte';
+	import CommandPalette from '$lib/components/panel/command-palette.svelte';
 
 	let isLoading = $state(false);
 
@@ -96,6 +97,7 @@
 	</div>
 {/if}
 
+<CommandPalette />
 <MobileNav />
 <InstallPrompt />
 <OfflineIndicator />

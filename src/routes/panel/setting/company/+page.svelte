@@ -127,26 +127,95 @@
 					/>
 				</div>
 
-				<div class="space-y-2">
-					<Label for="primaryColor">Primary Theme Color</Label>
-					<div class="flex items-center gap-2">
-						<Input
-							type="color"
-							id="primaryColor"
-							name="primaryColor"
-							value={(themeConfig.primaryColor as string) || '#4f46e5'}
-							class="h-10 w-16 p-1"
-						/>
-						<Input
-							value={(themeConfig.primaryColor as string) || '#4f46e5'}
-							readonly
-							class="w-24"
-						/>
+				<div class="grid gap-4 md:grid-cols-2">
+					<div class="space-y-4">
+						<div class="space-y-2">
+							<Label for="primaryColor">Primary Theme Color</Label>
+							<div class="flex items-center gap-2">
+								<Input
+									type="color"
+									id="primaryColor"
+									name="primaryColor"
+									value={(themeConfig.primaryColor as string) || '#0047FF'}
+									class="h-10 w-16 p-1"
+								/>
+								<Input
+									value={(themeConfig.primaryColor as string) || '#0047FF'}
+									readonly
+									class="w-24 bg-muted"
+								/>
+							</div>
+						</div>
+
+						<div class="space-y-2">
+							<Label for="sidebarBg">Sidebar Background</Label>
+							<div class="flex items-center gap-2">
+								<Input
+									type="color"
+									id="sidebarBg"
+									name="sidebarBg"
+									value={(themeConfig.sidebarBg as string) || '#ffffff'}
+									class="h-10 w-16 p-1"
+								/>
+								<Input
+									value={(themeConfig.sidebarBg as string) || '#ffffff'}
+									readonly
+									class="w-24 bg-muted"
+								/>
+							</div>
+						</div>
+
+						<div class="space-y-2">
+							<Label for="radius">Corner Radius (px)</Label>
+							<div class="flex items-center gap-4">
+								<input 
+									type="range" 
+									id="radius" 
+									name="radius" 
+									min="0" 
+									max="1" 
+									step="0.1" 
+									value={(themeConfig.radius as string) || '0.5'}
+									class="flex-1"
+								/>
+								<span class="text-xs font-bold w-12 text-center border rounded bg-muted py-1">
+									{(themeConfig.radius as string) || '0.5'}rem
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Branding Preview Card -->
+					<div class="rounded-xl border bg-slate-50 p-6 dark:bg-slate-900 flex flex-col gap-4">
+						<div class="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">Branding Preview</div>
+						
+						<div class="flex flex-1 gap-2 border rounded-lg bg-background overflow-hidden shadow-sm">
+							<!-- Mini Sidebar -->
+							<div class="w-12 border-r flex flex-col gap-2 p-2 shadow-inner" style="background-color: {themeConfig.sidebarBg || '#ffffff'}">
+								<div class="h-4 w-4 rounded-full" style="background-color: {themeConfig.primaryColor || '#0047FF'}"></div>
+								<div class="h-2 w-full rounded-full bg-slate-200"></div>
+								<div class="h-2 w-full rounded-full bg-slate-200"></div>
+							</div>
+							<!-- Mini Content -->
+							<div class="flex-1 p-3 flex flex-col gap-3">
+								<div class="flex justify-between items-center">
+									<div class="h-3 w-16 bg-slate-200 rounded"></div>
+									<div class="h-4 w-4 bg-slate-100 rounded-full border"></div>
+								</div>
+								<div class="h-12 w-full rounded-md shadow-sm border flex items-center px-2" style="border-radius: {themeConfig.radius || '0.5'}rem">
+									<div class="h-2 w-20 bg-primary/20 rounded"></div>
+								</div>
+								<div class="h-10 w-24 ml-auto rounded-md flex items-center justify-center text-[8px] font-bold text-white shadow-sm" style="background-color: {themeConfig.primaryColor || '#0047FF'}; border-radius: {themeConfig.radius || '0.5'}rem">
+									SIGN IN
+								</div>
+							</div>
+						</div>
+						<p class="text-[10px] text-center text-muted-foreground italic">Pratinjau visual berdasarkan pengaturan di atas.</p>
 					</div>
 				</div>
 			</Card.Content>
 			<Card.Footer>
-				<Button type="submit">Save Changes</Button>
+				<Button type="submit" class="w-full md:w-auto">Simpan Konfigurasi Brand</Button>
 			</Card.Footer>
 		</Card.Root>
 	</form>

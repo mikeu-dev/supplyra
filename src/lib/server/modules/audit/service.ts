@@ -1,6 +1,7 @@
 import { db } from '$lib/server/database';
 import { auditLogs } from '$lib/server/database/schemas';
 import { generateId } from '$lib/utils/useUserId';
+import { AuditRepository, type AuditLogFilter } from './repository';
 
 export type AuditAction = 'create' | 'update' | 'delete' | 'login' | 'logout' | 'export' | 'other';
 
@@ -15,7 +16,29 @@ export interface AuditLogInput {
 	userAgent?: string | null;
 }
 
+const repository = new AuditRepository();
+
 export class AuditService {
+	/**
+	 * Find audit logs with filters
+	 */
+	static async findMany(filters: AuditLogFilter) {
+		const [items, total] = await Promise.all([
+			repository.getAuditLogs(filters),
+			repository.countAuditLogs(filters)
+		]);
+
+		return { items, total };
+	}
+
+	/**
+	 * Get all available entity types for filtering
+	 */
+	static async getAvailableFilters() {
+		const types = await repository.getEntityTypes();
+		return { entityTypes: types };
+	}
+
 	/**
 	 * Log an action to the audit log
 	 */

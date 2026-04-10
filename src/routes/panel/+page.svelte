@@ -44,21 +44,29 @@
 			title="Total Revenue"
 			value={formatCurrency(data.financialSummary.totalRevenue)}
 			icon={Coins}
+			trend={12.5}
+			trendLabel="vs last month"
 		/>
 		<StatsWidget
 			title="Gross Profit"
 			value={formatCurrency(data.financialSummary.totalProfit)}
 			icon={TrendingUp}
+			trend={8.2}
+			trendLabel="vs last month"
 		/>
 		<StatsWidget
 			title="Average Margin"
 			value={`${data.financialSummary.averageMargin.toFixed(1)}%`}
 			icon={BarChart3}
+			trend={-2.1}
+			trendLabel="vs last month"
 		/>
 		<StatsWidget
 			title="Outstanding Billing"
 			value={formatCurrency(data.financialSummary.outstandingRevenue)}
 			icon={CreditCard}
+			trend={15.4}
+			trendLabel="needs attention"
 		/>
 	</div>
 

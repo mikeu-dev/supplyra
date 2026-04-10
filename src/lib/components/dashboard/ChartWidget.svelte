@@ -40,6 +40,12 @@
 
 			if (ctx) {
 				const { default: ChartJS } = await import('chart.js/auto');
+
+				// Create gradient
+				const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+				gradient.addColorStop(0, primaryColor.replace(')', ', 0.2)').replace('hsl(', 'hsla('));
+				gradient.addColorStop(1, primaryColor.replace(')', ', 0)').replace('hsl(', 'hsla('));
+
 				chart = new ChartJS(ctx, {
 					type: type,
 					data: {
@@ -48,32 +54,56 @@
 							{
 								label: title,
 								data: data,
-								backgroundColor: palette,
-								borderColor: palette.map((c) => c.replace('0.8)', '1)')), // rough attempt to make border solid
-								borderWidth: 1
+								backgroundColor: type === 'line' ? gradient : palette,
+								borderColor: primaryColor,
+								borderWidth: 3,
+								fill: type === 'line',
+								tension: 0.4,
+								pointBackgroundColor: primaryColor,
+								pointBorderColor: '#fff',
+								pointBorderWidth: 2,
+								pointRadius: 4,
+								pointHoverRadius: 6
 							}
 						]
 					},
 					options: {
 						responsive: true,
 						maintainAspectRatio: false,
-						scales:
-							type === 'bar'
-								? {
-										y: {
-											beginAtZero: true,
-											grid: {
-												display: true,
-												color: 'rgba(0,0,0,0.05)'
-											}
-										},
-										x: {
-											grid: {
-												display: false
-											}
-										}
-									}
-								: {}
+						plugins: {
+							legend: {
+								display: false
+							},
+							tooltip: {
+								backgroundColor: 'rgba(0,0,0,0.8)',
+								padding: 12,
+								titleFont: { size: 14, weight: 'bold' },
+								bodyFont: { size: 13 },
+								displayColors: false
+							}
+						},
+						scales: {
+							y: {
+								beginAtZero: true,
+								grid: {
+									display: true,
+									color: 'rgba(0,0,0,0.05)'
+								},
+								border: { display: false },
+								ticks: {
+									font: { size: 10 }
+								}
+							},
+							x: {
+								grid: {
+									display: false
+								},
+								border: { display: false },
+								ticks: {
+									font: { size: 10 }
+								}
+							}
+						}
 					}
 				});
 			}

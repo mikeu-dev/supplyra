@@ -30,6 +30,9 @@ export const actions: Actions = {
 		const description = formData.get('description') as string;
 		const about = formData.get('about') as string;
 		const primaryColor = formData.get('primaryColor') as string;
+		const sidebarBg = formData.get('sidebarBg') as string;
+		const sidebarText = formData.get('sidebarText') as string;
+		const radius = formData.get('radius') as string;
 
 		try {
 			const companyService = CompanyModule.getService();
@@ -41,7 +44,10 @@ export const actions: Actions = {
 				...currentTheme,
 				description,
 				about,
-				primaryColor
+				primaryColor,
+				sidebarBg,
+				sidebarText,
+				radius
 			};
 
 			await companyService.updateProfile(companyId, {
